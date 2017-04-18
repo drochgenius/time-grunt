@@ -164,14 +164,14 @@ module.exports = function (grunt, cb) {
 		log('\n\n' + chalk.underline('Execution Time') + chalk.gray(' (' + startTimePretty + ')'));
 		log(formatTable(tableData) + '\n');
 
-		if (cb) {
+		if (typeof cb === 'function') {
 			cb(tableData, function () {
 				process.exit(exitCode);
 			});
 
 			return;
+		} else {
+			process.exit(exitCode);
 		}
-
-		process.exit(exitCode);
 	});
 };
