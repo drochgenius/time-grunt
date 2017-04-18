@@ -165,6 +165,8 @@ module.exports = function (grunt, cb) {
 		log(formatTable(tableData) + '\n');
 
 		if (typeof cb === 'function') {
+			// Make sure to capture all logs before we die!
+			console.log = log;
 			cb(tableData, function () {
 				process.exit(exitCode);
 			});
